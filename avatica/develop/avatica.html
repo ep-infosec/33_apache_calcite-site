@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Developing Avatica</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="generator" content="Jekyll v4.2.2">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+  <link rel="stylesheet" href="/avatica/css/screen.css">
+  <link rel="icon" type="image/x-icon" href="/avatica/favicon.ico">
+</head>
+
+
+<body class="wrap">
+  <header role="banner">
+  <nav class="mobile-nav show-on-mobiles">
+    <ul>
+  <li class="">
+    <a href="/avatica/">Home</a>
+  </li>
+  <li class="">
+    <a href="/avatica/downloads/">Download</a>
+  </li>
+  <li class="">
+    <a href="/avatica/community/">Community</a>
+  </li>
+  <li class="current">
+    <a href="/avatica/develop/">Develop</a>
+  </li>
+  <li class="">
+    <a href="/avatica/news/">News</a>
+  </li>
+  <li class="">
+    <a href="/avatica/docs/">Docs</a>
+  </li>
+</ul>
+
+  </nav>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/avatica/">
+          <span class="sr-only">Apache Calcite Avatica</span>
+          <img src="/avatica/img/logo.png" width="226" height="140" alt="Calcite Logo">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds hide-on-mobiles">
+      <ul>
+  <li class="">
+    <a href="/avatica/">Home</a>
+  </li>
+  <li class="">
+    <a href="/avatica/downloads/">Download</a>
+  </li>
+  <li class="">
+    <a href="/avatica/community/">Community</a>
+  </li>
+  <li class="current">
+    <a href="/avatica/develop/">Develop</a>
+  </li>
+  <li class="">
+    <a href="/avatica/news/">News</a>
+  </li>
+  <li class="">
+    <a href="/avatica/docs/">Docs</a>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+</header>
+
+
+  <section class="standalone">
+  <div class="grid">
+
+    <div class="unit whole">
+      <article>
+        <h1>Developing Avatica</h1>
+        <!--
+
+-->
+
+<p>Want to help add a feature or fix a bug?</p>
+
+<ul id="markdown-toc">
+  <li><a href="#source-code" id="markdown-toc-source-code">Source code</a></li>
+  <li><a href="#download-source-build-and-run-tests" id="markdown-toc-download-source-build-and-run-tests">Download source, build, and run tests</a></li>
+  <li><a href="#contributing" id="markdown-toc-contributing">Contributing</a></li>
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting started</a></li>
+</ul>
+
+<h2 id="source-code">Source code</h2>
+
+<p>You can get the source code by
+<a href="/avatica/downloads">downloading a release</a>
+or from source control.</p>
+
+<p>Calcite uses git for version control.  The canonical source is in
+<a href="https://gitbox.apache.org/repos/asf/calcite-avatica.gitbox">Apache</a>,
+but most people find the
+<a href="https://github.com/apache/calcite-avatica">GitHub mirror</a> more
+user-friendly.</p>
+
+<h2 id="download-source-build-and-run-tests">Download source, build, and run tests</h2>
+
+<p>Prerequisites are Git, and Java (JDK 8 or later) on your path.</p>
+
+<p>Create a local copy of the git repository, <code class="language-plaintext highlighter-rouge">cd</code> to its root directory,
+then build using maven:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone git://github.com/apache/calcite-avatica.git avatica
+<span class="nv">$ </span><span class="nb">cd </span>calcite-avatica
+<span class="nv">$ </span>./gradlew build</code></pre></figure>
+
+<p>The HOWTO describes how to
+<a href="/avatica/docs/howto.html#building-from-a-source-distribution">build from a source distribution</a>,
+<a href="/avatica/docs/howto.html#running-tests">run more or fewer tests</a> and
+<a href="/avatica/docs/howto.html#running-integration-tests">run integration tests</a>.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>We welcome contributions.</p>
+
+<p>If you are planning to make a large contribution, talk to us first! It
+helps to agree on the general approach. Log a
+<a href="https://issues.apache.org/jira/browse/CALCITE">JIRA case</a> for your
+proposed feature or start a discussion on the dev list.</p>
+
+<p>Fork the github repository, and create a branch for your feature.</p>
+
+<p>Develop your feature and test cases, and make sure that
+<code class="language-plaintext highlighter-rouge">./gradlew build</code> succeeds. (Run extra tests if your change warrants it.)</p>
+
+<p>Commit your change to your branch, and use a comment that starts with
+the JIRA case number, like this:</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">[CALCITE-345] AssertionError in RexToLixTranslator comparing to date literal</code></pre></figure>
+
+<p>If your change had multiple commits, use <code class="language-plaintext highlighter-rouge">git rebase -i main</code> to
+squash them into a single commit, and to bring your code up to date
+with the latest on the main line.</p>
+
+<p>Then push your commit(s) to github, and create a pull request from
+your branch to the calcite main branch. Update the JIRA case
+to reference your pull request, and a committer will review your
+changes.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>Calcite is a community, so the first step to joining the project is to introduce yourself.
+Join the <a href="http://mail-archives.apache.org/mod_mbox/calcite-dev/">developers list</a>
+and send an email.</p>
+
+<p>If you have the chance to attend a <a href="http://www.meetup.com/Apache-Calcite/">meetup</a>,
+or meet <a href="http://calcite.apache.org/develop/#project-members">members of the community</a>
+at a conference, that’s also great.</p>
+
+<p>Choose an initial task to work on. It should be something really simple,
+such as a bug fix or a <a href="https://issues.apache.org/jira/issues/?jql=labels%20%3D%20newbie%20%26%20project%20%3D%20Calcite%20%26%20status%20%3D%20Open">Jira task that we have labeled
+“newbie”</a>.
+Follow the <a href="#contributing">contributing guidelines</a> to get your change committed.</p>
+
+<p>After you have made several useful contributions we may
+<a href="https://community.apache.org/contributors/">invite you to become a committer</a>.
+We value all contributions that help to build a vibrant community, not just code.
+You can contribute by testing the code, helping verify a release,
+writing documentation or the web site,
+or just by answering questions on the list.</p>
+
+      </article>
+    </div>
+
+    <div class="clear"></div>
+
+  </div>
+</section>
+
+
+  <footer role="contentinfo">
+  <div id="poweredby">
+    <a href="http://www.apache.org/">
+      <span class="sr-only">Apache</span>
+      <img src="/avatica/img/feather.png" width="190" height="77" alt="Apache Logo"></a>
+  </div>
+  <div id="copyright">
+  <p>The contents of this website are &copy;&nbsp;2022
+     <a href="https://www.apache.org/">Apache Software Foundation</a>
+     under the terms of
+     the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">
+     Apache&nbsp;License&nbsp;v2</a>. Apache Calcite and its logo are
+     trademarks of the Apache Software Foundation.
+  </p>
+  <p>
+      <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy Policy</a>
+  </p>
+  </div>
+</footer>
+
+  <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+
+
+</body>
+</html>

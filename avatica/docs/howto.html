@@ -1,0 +1,1514 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>HOWTO</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="generator" content="Jekyll v4.2.2">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+  <link rel="stylesheet" href="/avatica/css/screen.css">
+  <link rel="icon" type="image/x-icon" href="/avatica/favicon.ico">
+</head>
+
+
+<body class="wrap">
+  <header role="banner">
+  <nav class="mobile-nav show-on-mobiles">
+    <ul>
+  <li class="">
+    <a href="/avatica/">Home</a>
+  </li>
+  <li class="">
+    <a href="/avatica/downloads/">Download</a>
+  </li>
+  <li class="">
+    <a href="/avatica/community/">Community</a>
+  </li>
+  <li class="">
+    <a href="/avatica/develop/">Develop</a>
+  </li>
+  <li class="">
+    <a href="/avatica/news/">News</a>
+  </li>
+  <li class="current">
+    <a href="/avatica/docs/">Docs</a>
+  </li>
+</ul>
+
+  </nav>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/avatica/">
+          <span class="sr-only">Apache Calcite Avatica</span>
+          <img src="/avatica/img/logo.png" width="226" height="140" alt="Calcite Logo">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds hide-on-mobiles">
+      <ul>
+  <li class="">
+    <a href="/avatica/">Home</a>
+  </li>
+  <li class="">
+    <a href="/avatica/downloads/">Download</a>
+  </li>
+  <li class="">
+    <a href="/avatica/community/">Community</a>
+  </li>
+  <li class="">
+    <a href="/avatica/develop/">Develop</a>
+  </li>
+  <li class="">
+    <a href="/avatica/news/">News</a>
+  </li>
+  <li class="current">
+    <a href="/avatica/docs/">Docs</a>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+</header>
+
+
+    <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+    
+    <optgroup label="Overview">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Avatica Reference">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Avatica Go Client Reference">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Avatica Meta">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Avatica Go Client Meta">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+  </select>
+</div>
+
+
+      <div class="unit four-fifths">
+        <article>
+          <h1>HOWTO</h1>
+          <!--
+
+-->
+
+<p>Here’s some miscellaneous documentation about using Avatica.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#building-from-a-source-distribution" id="markdown-toc-building-from-a-source-distribution">Building from a source distribution</a></li>
+  <li><a href="#building-from-git" id="markdown-toc-building-from-git">Building from Git</a></li>
+  <li><a href="#running-tests" id="markdown-toc-running-tests">Running tests</a>    <ul>
+      <li><a href="#to-run-tests-in-docker" id="markdown-toc-to-run-tests-in-docker">To run tests in docker:</a></li>
+    </ul>
+  </li>
+  <li><a href="#contributing" id="markdown-toc-contributing">Contributing</a></li>
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting started</a></li>
+  <li><a href="#advanced-topics-for-developers" id="markdown-toc-advanced-topics-for-developers">Advanced topics for developers</a></li>
+  <li><a href="#advanced-topics-for-committers" id="markdown-toc-advanced-topics-for-committers">Advanced topics for committers</a>    <ul>
+      <li><a href="#set-up-pgp-signing-keys-for-calcite-committers" id="markdown-toc-set-up-pgp-signing-keys-for-calcite-committers">Set up PGP signing keys (for Calcite committers)</a></li>
+      <li><a href="#run-a-gpg-agent" id="markdown-toc-run-a-gpg-agent">Run a GPG agent</a></li>
+      <li><a href="#set-up-nexus-repository-credentials-for-calcite-committers" id="markdown-toc-set-up-nexus-repository-credentials-for-calcite-committers">Set up Nexus repository credentials (for Calcite committers)</a></li>
+      <li><a href="#making-a-snapshot-for-calcite-committers" id="markdown-toc-making-a-snapshot-for-calcite-committers">Making a snapshot (for Calcite committers)</a></li>
+      <li><a href="#making-a-release-candidate-for-calcite-committers" id="markdown-toc-making-a-release-candidate-for-calcite-committers">Making a release candidate (for Calcite committers)</a>        <ul>
+          <li><a href="#prepare-a-release-candidate-directly-in-your-environment" id="markdown-toc-prepare-a-release-candidate-directly-in-your-environment">Prepare a release candidate directly in your environment</a></li>
+          <li><a href="#prepare-a-release-candidate-in-docker" id="markdown-toc-prepare-a-release-candidate-in-docker">Prepare a release candidate in Docker</a></li>
+        </ul>
+      </li>
+      <li><a href="#checking-the-artifacts" id="markdown-toc-checking-the-artifacts">Checking the artifacts</a></li>
+      <li><a href="#cleaning-up-after-a-failed-release-attempt-for-calcite-committers" id="markdown-toc-cleaning-up-after-a-failed-release-attempt-for-calcite-committers">Cleaning up after a failed release attempt (for Calcite committers)</a></li>
+      <li><a href="#validate-a-release" id="markdown-toc-validate-a-release">Validate a release</a></li>
+      <li><a href="#get-approval-for-a-release-via-apache-voting-process-for-calcite-committers" id="markdown-toc-get-approval-for-a-release-via-apache-voting-process-for-calcite-committers">Get approval for a release via Apache voting process (for Calcite committers)</a></li>
+      <li><a href="#publishing-a-release-for-calcite-committers" id="markdown-toc-publishing-a-release-for-calcite-committers">Publishing a release (for Calcite committers)</a>        <ul>
+          <li><a href="#publishing-directly-in-your-environment" id="markdown-toc-publishing-directly-in-your-environment">Publishing directly in your environment</a></li>
+          <li><a href="#publishing-a-release-using-docker" id="markdown-toc-publishing-a-release-using-docker">Publishing a release using docker</a></li>
+        </ul>
+      </li>
+      <li><a href="#add-release-notes-and-announce-the-release" id="markdown-toc-add-release-notes-and-announce-the-release">Add release notes and announce the release</a></li>
+      <li><a href="#publish-the-web-site" id="markdown-toc-publish-the-web-site">Publishing the web site (for Calcite committers)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="building-from-a-source-distribution">Building from a source distribution</h2>
+
+<p>Prerequisites are Java (JDK 8 or later)
+and Gradle (version 7.4.2) on your path.</p>
+
+<p>(The source distribution
+<a href="https://issues.apache.org/jira/browse/CALCITE-4575">does not include the Gradle wrapper</a>;
+therefore you need to
+<a href="https://gradle.org/releases/">install Gradle manually</a>.)</p>
+
+<p>Unpack the source distribution <code class="language-plaintext highlighter-rouge">.tar.gz</code> file,
+<code class="language-plaintext highlighter-rouge">cd</code> to the root directory of the unpacked source,
+then build using Gradle:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">tar </span>xvfz apache-calcite-avatica-1.22.0-src.tar.gz
+<span class="nv">$ </span><span class="nb">cd </span>apache-calcite-avatica-1.22.0-src
+<span class="nv">$ </span>gradle build</code></pre></figure>
+
+<p><a href="#running-tests">Running tests</a> describes how to run more or fewer
+tests (but you should use the <code class="language-plaintext highlighter-rouge">gradle</code> command rather than
+<code class="language-plaintext highlighter-rouge">./gradlew</code>).</p>
+
+<h2 id="building-from-git">Building from Git</h2>
+
+<p>Prerequisites are Git,
+and Java (JDK 8 or later) on your path.</p>
+
+<p>Create a local copy of the GitHub repository,
+<code class="language-plaintext highlighter-rouge">cd</code> to its root directory,
+then build using Gradle:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone git://github.com/apache/calcite-avatica.git avatica
+<span class="nv">$ </span><span class="nb">cd </span>avatica
+<span class="nv">$ </span>./gradlew build</code></pre></figure>
+
+<p><a href="#running-tests">Running tests</a> describes how to run more or fewer
+tests.</p>
+
+<h2 id="running-tests">Running tests</h2>
+
+<p>The test suite will run by default when you build, unless you specify
+<code class="language-plaintext highlighter-rouge">-x test</code></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>./gradlew assemble <span class="c"># build the artifacts</span>
+<span class="nv">$ </span>./gradlew build <span class="nt">-x</span> <span class="nb">test</span> <span class="c"># build the artifacts, verify code style, skip tests</span>
+<span class="nv">$ </span>./gradlew check <span class="c"># verify code style, execute tests</span>
+<span class="nv">$ </span>./gradlew <span class="nb">test</span> <span class="c"># execute tests</span>
+<span class="nv">$ </span>./gradlew checkstyleMain checkstyleTest <span class="c"># verify code style</span></code></pre></figure>
+
+<p>You can use <code class="language-plaintext highlighter-rouge">./gradlew assemble</code> to build the artifacts and skip all tests and verifications.</p>
+
+<h3 id="to-run-tests-in-docker">To run tests in docker:</h3>
+
+<p>Prerequisites are <a href="https://docs.docker.com/install/">Docker</a> and
+<a href="https://docs.docker.com/compose/install/">Docker Compose</a>.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker-compose run <span class="nb">test</span></code></pre></figure>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>See the <a href="/avatica/develop/#contributing">developers guide</a>.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>See the <a href="/avatica/develop/#getting-started">developers guide</a>.</p>
+
+<h1 id="advanced-topics-for-developers">Advanced topics for developers</h1>
+
+<p>The following sections might be of interest if you are adding features
+to particular parts of the code base. You don’t need to understand
+these topics if you are just building from source and running tests.</p>
+
+<h1 id="advanced-topics-for-committers">Advanced topics for committers</h1>
+
+<p>The following sections are of interest to Calcite committers and in
+particular release managers.</p>
+
+<h2 id="set-up-pgp-signing-keys-for-calcite-committers">Set up PGP signing keys (for Calcite committers)</h2>
+
+<p>Follow instructions <a href="http://www.apache.org/dev/release-signing">here</a> to
+create a key pair. (On Mac OS X, I did <code class="language-plaintext highlighter-rouge">brew install gpg</code> and
+<code class="language-plaintext highlighter-rouge">gpg --gen-key</code>.)</p>
+
+<p>Add your public key to the
+<a href="https://dist.apache.org/repos/dist/release/calcite/KEYS"><code class="language-plaintext highlighter-rouge">KEYS</code></a>
+file by following instructions in the <code class="language-plaintext highlighter-rouge">KEYS</code> file.
+(The <code class="language-plaintext highlighter-rouge">KEYS</code> file is not present in the git repo or in a release tar
+ball because that would be
+<a href="https://issues.apache.org/jira/browse/CALCITE-1746">redundant</a>.)</p>
+
+<h2 id="run-a-gpg-agent">Run a GPG agent</h2>
+
+<p>By default, Gradle plugins which require you to unlock a GPG secret key
+will prompt you in the terminal. To prevent you from having to enter
+this password numerous times, it is highly recommended to install and
+run <code class="language-plaintext highlighter-rouge">gpg-agent</code>.</p>
+
+<p>This can be started automatically via an <code class="language-plaintext highlighter-rouge">~/.xsession</code> on Linux or some
+scripting in your shell’s configuration script of choice (e.g. <code class="language-plaintext highlighter-rouge">~/.bashrc</code> or <code class="language-plaintext highlighter-rouge">~/.zshrc</code>)</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">GPG_AGENT</span><span class="o">=</span><span class="si">$(</span>which gpg-agent<span class="si">)</span>
+<span class="nv">GPG_TTY</span><span class="o">=</span><span class="sb">`</span><span class="nb">tty</span><span class="sb">`</span>
+<span class="nb">export </span>GPG_TTY
+<span class="k">if</span> <span class="o">[[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$GPG_AGENT</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nv">envfile</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">/.gnupg/gpg-agent.env"</span>
+
+  <span class="k">if </span><span class="nb">test</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$envfile</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">kill</span> <span class="nt">-0</span> <span class="si">$(</span><span class="nb">grep </span>GPG_AGENT_INFO <span class="s2">"</span><span class="nv">$envfile</span><span class="s2">"</span> | <span class="nb">cut</span> <span class="nt">-d</span>: <span class="nt">-f</span> 2<span class="si">)</span> 2&gt;/dev/null<span class="p">;</span> <span class="k">then
+      </span><span class="nb">source</span> <span class="s2">"</span><span class="nv">$envfile</span><span class="s2">"</span>
+  <span class="k">else
+      </span><span class="nb">eval</span> <span class="s2">"</span><span class="si">$(</span>gpg-agent <span class="nt">--daemon</span> <span class="nt">--log-file</span><span class="o">=</span>~/.gpg/gpg.log <span class="nt">--write-env-file</span> <span class="s2">"</span><span class="nv">$envfile</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
+  <span class="k">fi
+  </span><span class="nb">export </span>GPG_AGENT_INFO  <span class="c"># the env file does not contain the export statement</span>
+<span class="k">fi</span></code></pre></figure>
+
+<p>Also, ensure that <code class="language-plaintext highlighter-rouge">default-cache-ttl 6000</code> is set in <code class="language-plaintext highlighter-rouge">~/.gnupg/gpg-agent.conf</code>
+to guarantee that your credentials will be cached for the duration of the build.</p>
+
+<h2 id="set-up-nexus-repository-credentials-for-calcite-committers">Set up Nexus repository credentials (for Calcite committers)</h2>
+
+<p>Gradle provides multiple ways to <a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_configuration_properties">configure project properties</a>.
+For instance, you could update <code class="language-plaintext highlighter-rouge">$HOME/.gradle/gradle.properties</code>.</p>
+
+<p>Note: the build script would print the missing properties, so you can try running it and let it complain on the missing ones.</p>
+
+<p>The following options are used:</p>
+
+<figure class="highlight"><pre><code class="language-properties" data-lang="properties"><span class="py">asfCommitterId</span><span class="p">=</span>
+<span class="py">asfNexusUsername</span><span class="p">=</span>
+<span class="py">asfNexusPassword</span><span class="p">=</span>
+<span class="py">asfSvnUsername</span><span class="p">=</span>
+<span class="py">asfSvnPassword</span><span class="p">=</span></code></pre></figure>
+
+<p>When
+<a href="https://github.com/vlsi/asflike-release-environment">asflike-release-environment</a>
+is used, the credentials are taken from <code class="language-plaintext highlighter-rouge">asfTest...</code>
+(e.g. <code class="language-plaintext highlighter-rouge">asfTestNexusUsername=test</code>)</p>
+
+<p>Note: if you want to uses <code class="language-plaintext highlighter-rouge">gpg-agent</code>, you need to pass <code class="language-plaintext highlighter-rouge">useGpgCmd</code> property, and specify the key id
+via <code class="language-plaintext highlighter-rouge">signing.gnupg.keyName</code>.</p>
+
+<h2 id="making-a-snapshot-for-calcite-committers">Making a snapshot (for Calcite committers)</h2>
+
+<p>Before you start:</p>
+
+<ul>
+  <li>Set up signing keys as described above.</li>
+  <li>Make sure you are using JDK 8 (not 9 or 10).</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Make sure that there are no junk files in the sandbox</span>
+git clean <span class="nt">-xn</span>
+
+./gradlew <span class="nt">-Pasf</span> publish</code></pre></figure>
+
+<h2 id="making-a-release-candidate-for-calcite-committers">Making a release candidate (for Calcite committers)</h2>
+
+<p>Before you start:</p>
+
+<ul>
+  <li>Set up signing keys as described above.</li>
+  <li>Make sure you are using JDK 8 (not 9 or 10).</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">README</code>, <code class="language-plaintext highlighter-rouge">site/_docs/howto.md</code>, <code class="language-plaintext highlighter-rouge">site/_docs/docker_images.md</code> have the correct version number.</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">site/_docs/howto.md</code> has the correct Gradle version.</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">NOTICE</code> has the current copyright year.</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">calcite.avatica.version</code> has the proper value in <code class="language-plaintext highlighter-rouge">/gradle.properties</code>.</li>
+  <li>Add release notes to <code class="language-plaintext highlighter-rouge">site/_docs/history.md</code>. If release notes already exist for the version to be released, but
+are commented out, remove the comments (<code class="language-plaintext highlighter-rouge">{% comment %}</code> and <code class="language-plaintext highlighter-rouge">{% endcomment %}</code>). Include the commit history,
+names of people who contributed to the release, and say which versions of Java, Guava and operating systems the
+release is tested against.</li>
+  <li>Generate a report of vulnerabilities that occur among dependencies,
+using <code class="language-plaintext highlighter-rouge">./gradlew dependencyCheckUpdate dependencyCheckAggregate</code>.</li>
+  <li>Make sure that
+<a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20CALCITE%20AND%20status%20%3D%20Resolved%20and%20fixVersion%20is%20null">
+every “resolved” JIRA case</a> (including duplicates) has
+a fix version assigned (most likely the version we are
+just about to release)</li>
+</ul>
+
+<p>The release candidate process does not add commits,
+so there’s no harm if it fails. It might leave <code class="language-plaintext highlighter-rouge">-rc</code> tag behind
+which can be removed if required.</p>
+
+<p>You can perform a dry-run release with a help of
+<a href="https://github.com/vlsi/asflike-release-environment">vlsi/asflike-release-environment</a>.
+That performs the same steps, however it pushes changes to the mock Nexus, Git, and SVN servers.</p>
+
+<p>If any of the steps fail, fix the problem, and
+start again from the top.</p>
+
+<h3 id="prepare-a-release-candidate-directly-in-your-environment">Prepare a release candidate directly in your environment</h3>
+
+<p>Pick a release candidate index (starting from 0) and ensure it does
+not interfere with previous candidates for the version.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Make sure that there are no junk files in the sandbox</span>
+git clean <span class="nt">-xn</span>
+
+<span class="c"># Dry run the release candidate (push to asf-like-environment)</span>
+./gradlew prepareVote <span class="nt">-Prc</span><span class="o">=</span>0
+
+<span class="c"># Push release candidate to ASF servers</span>
+./gradlew prepareVote <span class="nt">-Prc</span><span class="o">=</span>0 <span class="nt">-Pasf</span></code></pre></figure>
+
+<h3 id="prepare-a-release-candidate-in-docker">Prepare a release candidate in Docker</h3>
+
+<ul>
+  <li>
+    <p>You will need to have <a href="https://docs.docker.com/install/">Docker</a> and <a href="https://docs.docker.com/compose/install/">Docker Compose</a> installed.</p>
+  </li>
+  <li>
+    <p>The script expects you to mount your <code class="language-plaintext highlighter-rouge">~/.gnupg</code> directory into the <code class="language-plaintext highlighter-rouge">/.gnupg</code> directory in the container. Once mounted into the container,
+the script will make a copy of the contents and move it to a different location, so that it will not modify the contents of your original
+<code class="language-plaintext highlighter-rouge">~/.gnupg</code> directory during the build.</p>
+  </li>
+  <li>
+    <p>Start the <a href="https://github.com/vlsi/asflike-release-environment">asflike-release-environment</a> to prepare a staging environment for a dry-run.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># On Linux (dry-run):</span>
+docker-compose run <span class="nt">-v</span> ~/.gnupg:/.gnupg dry-run
+
+<span class="c"># On Windows (dry-run):</span>
+docker-compose run <span class="nt">-v</span> /c/Users/username/AppData/Roaming/gnupg:/.gnupg dry-run
+
+<span class="c"># On Linux (push to ASF servers):</span>
+docker-compose run <span class="nt">-v</span> ~/.gnupg:/.gnupg publish-release-for-voting
+
+<span class="c"># On Windows (push to ASF servers):</span>
+docker-compose run <span class="nt">-v</span> /c/Users/username/AppData/Roaming/gnupg:/.gnupg publish-release-for-voting</code></pre></figure>
+
+<h2 id="checking-the-artifacts">Checking the artifacts</h2>
+
+<ul>
+  <li>In the <code class="language-plaintext highlighter-rouge">release/build/distributions</code> directory should be these 3 files, among others:
+    <ul>
+      <li>apache-calcite-avatica-X.Y.Z-src.tar.gz</li>
+      <li>apache-calcite-avatica-X.Y.Z-src.tar.gz.asc</li>
+      <li>apache-calcite-avatica-X.Y.Z-src.tar.gz.sha512</li>
+    </ul>
+  </li>
+  <li>Note that the file names start <code class="language-plaintext highlighter-rouge">apache-calcite-avatica-</code>.</li>
+  <li>In the source distro <code class="language-plaintext highlighter-rouge">.tar.gz</code> (currently there is
+no binary distro), check that all files belong to a directory called
+<code class="language-plaintext highlighter-rouge">apache-calcite-avatica-X.Y.Z-src</code>.</li>
+  <li>That directory must contain files <code class="language-plaintext highlighter-rouge">NOTICE</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>,
+<code class="language-plaintext highlighter-rouge">README</code>, <code class="language-plaintext highlighter-rouge">README.md</code>
+    <ul>
+      <li>Check that the version in <code class="language-plaintext highlighter-rouge">README</code> is correct</li>
+      <li>Check that <code class="language-plaintext highlighter-rouge">LICENSE</code> is identical to the file checked into git</li>
+    </ul>
+  </li>
+  <li>Make sure that the following files do not occur in the source
+distros: <code class="language-plaintext highlighter-rouge">KEYS</code>, <code class="language-plaintext highlighter-rouge">gradlew</code>, <code class="language-plaintext highlighter-rouge">gradlew.bat</code>, <code class="language-plaintext highlighter-rouge">gradle-wrapper.jar</code>,
+<code class="language-plaintext highlighter-rouge">gradle-wrapper.properties</code></li>
+  <li>For each .jar (for example <code class="language-plaintext highlighter-rouge">core/build/libs/avatica-core-X.Y.Z.jar</code>
+and <code class="language-plaintext highlighter-rouge">server/build/libs/avatica-server-X.Y.Z-sources.jar</code>),
+verify that the <code class="language-plaintext highlighter-rouge">META-INF</code> directory contains the correct
+contents for <code class="language-plaintext highlighter-rouge">LICENSE</code> and <code class="language-plaintext highlighter-rouge">NOTICE</code> per the
+source/classes contained. Refer to the ASF licensing documentation on
+what is required.</li>
+  <li>Check PGP, per <a href="https://httpd.apache.org/dev/verification.html">this</a></li>
+</ul>
+
+<p>Verify the staged artifacts in the Nexus repository:</p>
+
+<ul>
+  <li>Go to <a href="https://repository.apache.org/">https://repository.apache.org/</a> and login</li>
+  <li>Under <code class="language-plaintext highlighter-rouge">Build Promotion</code>, click <code class="language-plaintext highlighter-rouge">Staging Repositories</code></li>
+  <li>In the <code class="language-plaintext highlighter-rouge">Staging Repositories</code> tab there should be a line with profile <code class="language-plaintext highlighter-rouge">org.apache.calcite</code></li>
+  <li>Navigate through the artifact tree and make sure the .jar, .pom, .asc files are present</li>
+</ul>
+
+<h2 id="cleaning-up-after-a-failed-release-attempt-for-calcite-committers">Cleaning up after a failed release attempt (for Calcite committers)</h2>
+
+<p>If something is not correct, you can fix it, commit it, and prepare the next candidate.
+The release candidate tags might be kept for a while.</p>
+
+<h2 id="validate-a-release">Validate a release</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Check that the signing key (e.g. 2AD3FAE3) is pushed</span>
+gpg <span class="nt">--recv-keys</span> key
+
+<span class="c"># Check keys</span>
+curl <span class="nt">-O</span> https://dist.apache.org/repos/dist/release/calcite/KEYS
+
+<span class="c"># Sign/check sha512 hashes</span>
+<span class="c"># (Assumes your O/S has a 'shasum' command.)</span>
+<span class="k">function </span>checkHash<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+  <span class="k">for </span>i <span class="k">in</span> <span class="k">*</span>.<span class="o">{</span>pom,gz<span class="o">}</span><span class="p">;</span> <span class="k">do
+    if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-f</span> <span class="nv">$i</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+      continue
+    fi
+    if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="nv">$i</span>.sha512 <span class="o">]</span><span class="p">;</span> <span class="k">then
+      if</span> <span class="o">[</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">cat</span> <span class="nv">$i</span>.sha512<span class="si">)</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="si">$(</span>shasum <span class="nt">-a</span> 512 <span class="nv">$i</span><span class="si">)</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+        </span><span class="nb">echo</span> <span class="nv">$i</span>.sha512 present and correct
+      <span class="k">else
+        </span><span class="nb">echo</span> <span class="nv">$i</span>.sha512 does not match
+      <span class="k">fi
+    else
+      </span>shasum <span class="nt">-a</span> 512 <span class="nv">$i</span> <span class="o">&gt;</span> <span class="nv">$i</span>.sha512
+      <span class="nb">echo</span> <span class="nv">$i</span>.sha512 created
+    <span class="k">fi
+  done</span>
+<span class="o">}</span>
+checkHash apache-calcite-avatica-X.Y.Z-rcN</code></pre></figure>
+
+<h2 id="get-approval-for-a-release-via-apache-voting-process-for-calcite-committers">Get approval for a release via Apache voting process (for Calcite committers)</h2>
+
+<p>Release vote on dev list.
+Note: the draft mail is printed as the final step of <code class="language-plaintext highlighter-rouge">prepareVote</code> task,
+and you can find the draft in <code class="language-plaintext highlighter-rouge">/build/prepareVote/mail.txt</code></p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">To: dev@calcite.apache.org
+Subject: [VOTE] Release apache-calcite-avatica-X.Y.Z (release candidate N)
+
+Hi all,
+
+I have created a build for Apache Calcite Avatica X.Y.Z, release candidate N.
+
+Thanks to everyone who has contributed to this release.
+&lt;Further details about release.&gt; You can read the release notes here:
+https://github.com/apache/calcite-avatica/blob/XXXX/site/_docs/history.md
+
+The commit to be voted upon:
+https://gitbox.apache.org/repos/asf/calcite-avatica/commit/NNNNNN
+
+Its hash is XXXX.
+
+The artifacts to be voted on are located here:
+https://dist.apache.org/repos/dist/dev/calcite/apache-calcite-avatica-X.Y.Z-rcN/
+
+The hashes of the artifacts are as follows:
+src.tar.gz.sha512 XXXX
+
+A staged Maven repository is available for review at:
+https://repository.apache.org/content/repositories/orgapachecalcite-NNNN
+
+Release artifacts are signed with the following key:
+https://people.apache.org/keys/committer/jhyde.asc
+
+Please vote on releasing this package as Apache Calcite Avatica X.Y.Z.
+
+The vote is open for the next 72 hours and passes if a majority of
+at least three +1 PMC votes are cast.
+
+[ ] +1 Release this package as Apache Calcite Avatica X.Y.Z
+[ ]  0 I don't feel strongly about it, but I'm okay with the release
+[ ] -1 Do not release this package because...
+
+
+Here is my vote:
+
++1 (binding)
+
+Julian</code></pre></figure>
+
+<p>After vote finishes, send out the result:</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">Subject: [RESULT] [VOTE] Release apache-calcite-avatica-X.Y.Z (release candidate N)
+To: dev@calcite.apache.org
+
+Thanks to everyone who has tested the release candidate and given
+their comments and votes.
+
+The tally is as follows.
+
+N binding +1s:
+&lt;names&gt;
+
+N non-binding +1s:
+&lt;names&gt;
+
+No 0s or -1s.
+
+Therefore I am delighted to announce that the proposal to release
+Apache Calcite Avatica X.Y.Z has passed.
+
+Thanks everyone. We’ll now roll the release out to the mirrors.
+
+There was some feedback during voting. I shall open a separate
+thread to discuss.
+
+
+Julian</code></pre></figure>
+
+<p>Use the <a href="http://s.apache.org">Apache URL shortener</a> to generate
+shortened URLs for the vote proposal and result emails. Examples:
+<a href="http://s.apache.org/calcite-1.2-vote">s.apache.org/calcite-1.2-vote</a> and
+<a href="http://s.apache.org/calcite-1.2-result">s.apache.org/calcite-1.2-result</a>.</p>
+
+<h2 id="publishing-a-release-for-calcite-committers">Publishing a release (for Calcite committers)</h2>
+
+<p>After a successful release vote, we need to push the release
+out to mirrors, and other tasks.</p>
+
+<p>Choose a release date.
+This is based on the time when you expect to announce the release.
+This is usually a day after the vote closes.
+Remember that UTC date changes at 4pm Pacific time.</p>
+
+<p>In JIRA, search for
+<a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20CALCITE%20and%20fixVersion%20%3D%201.5.0%20and%20status%20%3D%20Resolved%20and%20resolution%20%3D%20Fixed">all issues resolved in this release</a>,
+and do a bulk update changing their status to “Closed”,
+with a change comment
+“Resolved in release X.Y.Z (YYYY-MM-DD)”
+(fill in release number and date appropriately).
+Uncheck “Send mail for this update”.</p>
+
+<p>Tip: Push the git tag only after the staged nexus artifacts are promoted in the repository. This is because pushing the
+tag triggers Docker Hub to start building the docker images immediately and the build will pull in the promoted artifacts.
+If the artifacts are not yet available, the build on Docker Hub will fail. It’s best to continue with the following steps
+after you have confirmed that the nexus artifacts were promoted properly.</p>
+
+<h3 id="publishing-directly-in-your-environment">Publishing directly in your environment</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Dry run publishing the release (push to asf-like-environment)</span>
+./gradlew publishDist <span class="nt">-Prc</span><span class="o">=</span>0
+
+<span class="c"># Publish the release to ASF servers</span>
+./gradlew publishDist <span class="nt">-Prc</span><span class="o">=</span>0 <span class="nt">-Pasf</span></code></pre></figure>
+
+<p>If there are more than 2 releases in SVN (see https://dist.apache.org/repos/dist/release/calcite),
+clear out the oldest ones:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">svn <span class="nb">rm </span>https://dist.apache.org/repos/dist/release/calcite/apache-calcite-avatica-X.Y.Z</code></pre></figure>
+
+<p>The old releases will remain available in the
+<a href="http://archive.apache.org/dist/calcite/">release archive</a>.</p>
+
+<h3 id="publishing-a-release-using-docker">Publishing a release using docker</h3>
+
+<p>This assumes that a rc release was tagged and pushed to the git repository.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker-compose run promote-release</code></pre></figure>
+
+<h2 id="add-release-notes-and-announce-the-release">Add release notes and announce the release</h2>
+
+<p>Add a release note by copying
+<a href="https://github.com/apache/calcite-avatica/tree/main/site/_posts/2016-11-01-release-1.9.0.md">site/_posts/2016-11-01-release-1.9.0.md</a>,
+update the version number in <code class="language-plaintext highlighter-rouge">gradle.properties</code>,
+generate the javadoc and copy to <code class="language-plaintext highlighter-rouge">site/target/avatica/javadocAggregate</code>,
+<a href="#publish-the-web-site">publish the site</a>,
+and check that it appears in the contents in <a href="http://localhost:4000/news/">news</a>.</p>
+
+<p>After 24 hours, announce the release by sending an email to
+<a href="https://mail-archives.apache.org/mod_mbox/www-announce/">announce@apache.org</a>.
+You can use
+<a href="https://mail-archives.apache.org/mod_mbox/www-announce/201606.mbox/%3C57559CC7.1000402@apache.org%3E">the 1.8.0 announcement</a>
+as a template. Be sure to include a brief description of the project.</p>
+
+<h2 id="publish-the-web-site">Publishing the web site (for Calcite committers)</h2>
+
+<p>See instructions in
+<a href="https://github.com/apache/calcite-avatica/tree/main/site/README.md">site/README.md</a>.</p>
+
+          
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="section-nav">
+      <div class="left align-right">
+          
+            
+            
+            <a href="/avatica/docs/protobuf_reference.html" class="prev">Previous</a>
+          
+      </div>
+      <div class="right align-left">
+          
+            
+            
+
+            
+            <a href="/avatica/docs/security.html" class="next">Next</a>
+          
+      </div>
+    </div>
+    <div class="clear"></div>
+    
+
+        </article>
+      </div>
+
+      <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    
+    <h4>Overview</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/index.html">Background</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/roadmap.html">Roadmap</a></li>
+
+
+</ul>
+
+    
+    <h4>Avatica Reference</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/client_reference.html">Client Reference</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/json_reference.html">JSON Reference</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/protobuf_reference.html">Protobuf Reference</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class="current"><a href="/avatica/docs/howto.html">HOWTO</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/security.html">Security</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/compatibility.html">Compatibility</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/custom_client_artifacts.html">Custom Client Artifacts</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/docker.html">Docker Images</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/protocol_testing.html">Protocol Testing</a></li>
+
+
+</ul>
+
+    
+    <h4>Avatica Go Client Reference</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/go_client_reference.html">Go Client Reference</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/go_howto.html">HOWTO</a></li>
+
+
+</ul>
+
+    
+    <h4>Avatica Meta</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/history.html">History</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/api/">API</a></li>
+
+
+</ul>
+
+    
+    <h4>Avatica Go Client Meta</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/avatica/docs/go_history.html">Go Client History</a></li>
+
+
+</ul>
+
+    
+  </aside>
+</div>
+
+
+      <div class="clear"></div>
+
+    </div>
+  </section>
+
+
+  <footer role="contentinfo">
+  <div id="poweredby">
+    <a href="http://www.apache.org/">
+      <span class="sr-only">Apache</span>
+      <img src="/avatica/img/feather.png" width="190" height="77" alt="Apache Logo"></a>
+  </div>
+  <div id="copyright">
+  <p>The contents of this website are &copy;&nbsp;2022
+     <a href="https://www.apache.org/">Apache Software Foundation</a>
+     under the terms of
+     the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">
+     Apache&nbsp;License&nbsp;v2</a>. Apache Calcite and its logo are
+     trademarks of the Apache Software Foundation.
+  </p>
+  <p>
+      <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy Policy</a>
+  </p>
+  </div>
+</footer>
+
+  <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+
+
+</body>
+</html>

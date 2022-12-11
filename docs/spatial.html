@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>Spatial</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="generator" content="Jekyll v4.2.2">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+  <link rel="stylesheet" href="/css/screen.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+
+<body class="wrap">
+  <header role="banner">
+  <div class="grid">
+    <div class="unit center-on-mobiles">
+      <h1>
+        <a href="/">
+          <span class="sr-only">Apache Calcite</span>
+          <img src="/img/logo.svg" alt="Calcite Logo">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+  <li class="">
+    <a href="/">Home</a>
+  </li>
+  <li class="">
+    <a href="/downloads/">Download</a>
+  </li>
+  <li class="">
+    <a href="/community/">Community</a>
+  </li>
+  <li class="">
+    <a href="/develop/">Develop</a>
+  </li>
+  <li class="">
+    <a href="/news/">News</a>
+  </li>
+  <li class="current">
+    <a href="/docs/">Docs</a>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+</header>
+
+
+    <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+        <optgroup label="Overview">      
+    </optgroup>
+    <optgroup label="Advanced">      
+    </optgroup>
+    <optgroup label="Avatica">      
+    </optgroup>
+    <optgroup label="Reference">      
+    </optgroup>
+    <optgroup label="Meta">      
+    </optgroup>
+
+  </select>
+</div>
+
+
+      <div class="unit four-fifths">
+        <article>
+          <h1>Spatial</h1>
+          <!--
+
+-->
+
+<p>Calcite is <a href="https://issues.apache.org/jira/browse/CALCITE-1968">aiming</a> to implement
+OpenGIS Simple Features Implementation Specification for SQL,
+<a href="https://www.opengeospatial.org/standards/sfs">version 1.2.1</a>,
+a standard implemented by spatial databases such as
+<a href="https://postgis.net/">PostGIS</a>
+and <a href="https://www.h2gis.org/">H2GIS</a>.</p>
+
+<p>We also aim to add optimizer support for
+<a href="https://issues.apache.org/jira/browse/CALCITE-1861">spatial indexes</a>
+and other forms of query optimization.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#enabling-spatial-support" id="markdown-toc-enabling-spatial-support">Enabling spatial support</a></li>
+  <li><a href="#query-rewrites" id="markdown-toc-query-rewrites">Query rewrites</a></li>
+  <li><a href="#limitations" id="markdown-toc-limitations">Limitations</a></li>
+  <li><a href="#acknowledgements" id="markdown-toc-acknowledgements">Acknowledgements</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>A spatial database is a database that is optimized for storing and query data
+that represents objects defined in a geometric space.</p>
+
+<p>Calcite’s support for spatial data includes:</p>
+
+<ul>
+  <li>A <a href="reference.html#data-types">GEOMETRY</a> data type and
+<a href="reference.html#spatial-types">sub-types</a> including <code class="language-plaintext highlighter-rouge">POINT</code>, <code class="language-plaintext highlighter-rouge">LINESTRING</code>
+and <code class="language-plaintext highlighter-rouge">POLYGON</code>
+</li>
+  <li>
+<a href="reference.html#spatial-functions">Spatial functions</a> (prefixed <code class="language-plaintext highlighter-rouge">ST_</code>;
+we have implemented about 35 of the 150 in the OpenGIS specification)</li>
+</ul>
+
+<p>and will at some point also include query rewrites to use spatial indexes.</p>
+
+<h2 id="enabling-spatial-support">Enabling spatial support</h2>
+
+<p>Though the <code class="language-plaintext highlighter-rouge">GEOMETRY</code> data type is built-in, the functions are not enabled by
+default. You need to add <code class="language-plaintext highlighter-rouge">fun=spatial</code> to the JDBC connect string to enable
+the functions. For example, <code class="language-plaintext highlighter-rouge">sqlline</code>:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">sqlline</span>
+<span class="o">&gt;</span> <span class="o">!</span><span class="k">connect</span> <span class="n">jdbc</span><span class="p">:</span><span class="n">calcite</span><span class="p">:</span><span class="n">fun</span><span class="o">=</span><span class="n">spatial</span> <span class="nv">"sa"</span> <span class="nv">""</span>
+<span class="k">SELECT</span> <span class="n">ST_PointFromText</span><span class="p">(</span><span class="s1">'POINT(-71.064544 42.28787)'</span><span class="p">);</span>
+<span class="o">+</span><span class="c1">-------------------------------+</span>
+<span class="o">|</span> <span class="n">EXPR</span><span class="err">$</span><span class="mi">0</span>                        <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------------------------------+</span>
+<span class="o">|</span> <span class="p">{</span><span class="nv">"x"</span><span class="p">:</span><span class="o">-</span><span class="mi">71</span><span class="p">.</span><span class="mi">064544</span><span class="p">,</span><span class="nv">"y"</span><span class="p">:</span><span class="mi">42</span><span class="p">.</span><span class="mi">28787</span><span class="p">}</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-------------------------------+</span>
+<span class="mi">1</span> <span class="k">row</span> <span class="n">selected</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">323</span> <span class="n">seconds</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="query-rewrites">Query rewrites</h2>
+
+<p>One class of rewrites uses
+<a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert space-filling curves</a>.
+Suppose that a table
+has columns <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code> denoting the position of a point and also a column <code class="language-plaintext highlighter-rouge">h</code>
+denoting the distance of that point along a curve. Then a predicate involving
+distance of (x, y) from a fixed point can be translated into a predicate
+involving ranges of h.</p>
+
+<p>Suppose we have a table with the locations of restaurants:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">Restaurants</span> <span class="p">(</span>
+  <span class="nb">INT</span> <span class="n">id</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+  <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="n">name</span><span class="p">,</span>
+  <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">cuisine</span><span class="p">,</span>
+  <span class="nb">INT</span> <span class="n">x</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nb">INT</span> <span class="n">y</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="nb">INT</span> <span class="n">h</span>  <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">DERIVED</span> <span class="p">(</span><span class="n">ST_Hilbert</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)))</span>
+<span class="n">SORT</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">h</span><span class="p">);</span></code></pre></figure>
+
+<p>The optimizer requires that <code class="language-plaintext highlighter-rouge">h</code> is the position on the Hilbert curve of
+point (<code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code>), and also requires that the table is sorted on <code class="language-plaintext highlighter-rouge">h</code>.
+The <code class="language-plaintext highlighter-rouge">DERIVED</code> and <code class="language-plaintext highlighter-rouge">SORT KEY</code> clauses in the DDL syntax are invented for the
+purposes of this example, but a clustered table with a <code class="language-plaintext highlighter-rouge">CHECK</code> constraint
+would work just as well.</p>
+
+<p>The query</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">Restaurants</span>
+<span class="k">WHERE</span> <span class="n">ST_DWithin</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">ST_Point</span><span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span></code></pre></figure>
+
+<p>can be rewritten to</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">Restaurants</span>
+<span class="k">WHERE</span> <span class="p">(</span><span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">36496</span> <span class="k">AND</span> <span class="mi">36520</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">36456</span> <span class="k">AND</span> <span class="mi">36464</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33252</span> <span class="k">AND</span> <span class="mi">33254</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33236</span> <span class="k">AND</span> <span class="mi">33244</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33164</span> <span class="k">AND</span> <span class="mi">33176</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33092</span> <span class="k">AND</span> <span class="mi">33100</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33055</span> <span class="k">AND</span> <span class="mi">33080</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33050</span> <span class="k">AND</span> <span class="mi">33053</span>
+    <span class="k">OR</span> <span class="n">h</span> <span class="k">BETWEEN</span> <span class="mi">33033</span> <span class="k">AND</span> <span class="mi">33035</span><span class="p">)</span>
+<span class="k">AND</span> <span class="n">ST_DWithin</span><span class="p">(</span><span class="n">ST_Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">ST_Point</span><span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="mi">6</span><span class="p">)</span></code></pre></figure>
+
+<p>The rewritten query contains a collection of ranges on <code class="language-plaintext highlighter-rouge">h</code> followed by the
+original <code class="language-plaintext highlighter-rouge">ST_DWithin</code> predicate. The range predicates are evaluated first and
+are very fast because the table is sorted on <code class="language-plaintext highlighter-rouge">h</code>.</p>
+
+<p>Here is the full set of transformations:</p>
+
+<div class="scroll-table-style"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Description</th>
+      <th>Expression</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Test whether a constant rectangle (X, X2, Y, Y2) contains a point (a, b)<br><br>Rewrite to use Hilbert index</td>
+      <td>ST_Contains(​ST_Rectangle(​X, X2, Y, Y2), ST_Point(a, b)))<br><br>h BETWEEN C1 AND C2<br>OR …<br>OR h BETWEEN C<sub>2k</sub> AND C<sub>2k+1</sub>
+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Test whether a constant geometry G contains a point (a, b)<br><br>Rewrite to use bounding box of constant geometry, which is also constant, then rewrite to Hilbert range(s) as above</td>
+      <td>ST_Contains(​ST_Envelope(​G), ST_Point(a, b))<br><br>ST_Contains(​ST_Rectangle(​X, X2, Y, Y2), ST_Point(a, b)))</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Test whether a point (a, b) is within a buffer around a constant point (X, Y)<br><br>Special case of previous, because buffer is a constant geometry</td>
+      <td>ST_Contains(​ST_Buffer(​ST_Point(a, b), D), ST_Point(X, Y))</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Test whether a point (a, b) is within a constant distance D of a constant point (X, Y)<br><br>First, convert to buffer, then use previous rewrite for constant geometry</td>
+      <td>ST_DWithin(​ST_Point(a, b), ST_Point(X, Y), D))<br><br>ST_Contains(​ST_Buffer(​ST_Point(​X, Y), D), ST_Point(a, b))</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Test whether a constant point (X, Y) is within a constant distance D of a point (a, b)<br><br>Reverse arguments of call to <code>ST_DWithin</code>, then use previous rewrite</td>
+      <td>ST_DWithin(​ST_Point(X, Y), ST_Point(a, b), D))<br><br>ST_Contains(​ST_Buffer(​ST_Point(​X, Y), D), ST_Point(a, b))</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>In the above, <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> are variables, <code class="language-plaintext highlighter-rouge">X</code>, <code class="language-plaintext highlighter-rouge">X2</code>, <code class="language-plaintext highlighter-rouge">Y</code>, <code class="language-plaintext highlighter-rouge">Y2</code>, <code class="language-plaintext highlighter-rouge">D</code> and <code class="language-plaintext highlighter-rouge">G</code> are
+constants.</p>
+
+<p>Many rewrites are inexact: there are some points where the predicate would
+return false but the rewritten predicate returns true.
+For example, a rewrite might convert a test whether a point is in a circle to a
+test for whether the point is in the circle’s bounding square.
+These rewrites are worth performing because they are much quicker to apply,
+and often allow range scans on the Hilbert index.
+But for safety, Calcite applies the original predicate, to remove false positives.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>Some spatial functions rely on Proj4J to transform the projection of spatial objects.
+Proj4J is released under the Apache License 2.0, however, it also uses the EPSG dataset,
+which has restricting <a href="https://epsg.org/terms-of-use.html">terms of use</a>.
+As a result, Proj4J is not suitable for inclusion in Apache Calcite
+and these functions will throw <code class="language-plaintext highlighter-rouge">ClassNotFoundException</code>s.
+Users can still use these functions by including Proj4J in their classpath.</p>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>Calcite’s OpenGIS implementation uses the
+<a href="https://github.com/locationtech/jts">JTS Topology Suite</a>. Thanks for the
+help we received from their community.</p>
+
+<p>While developing this feature, we made extensive use of the
+PostGIS documentation and tests,
+and the H2GIS documentation, and consulted both as reference implementations
+when the specification wasn’t clear. Thank you to these awesome projects.</p>
+
+          
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="section-nav">
+      <div class="left align-right">
+          
+            
+            
+            <a href="/docs/adapter.html" class="prev">Previous</a>
+          
+      </div>
+      <div class="right align-left">
+          
+            
+            
+
+            
+            <a href="/docs/stream.html" class="next">Next</a>
+          
+      </div>
+    </div>
+    <div class="clear"></div>
+    
+
+        </article>
+      </div>
+
+      <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    
+    <h4>Overview</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/index.html">Background</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/tutorial.html">Tutorial</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/algebra.html">Algebra</a></li>
+
+
+</ul>
+
+    
+    <h4>Advanced</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/adapter.html">Adapters</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class="current"><a href="/docs/spatial.html">Spatial</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/stream.html">Streaming</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/materialized_views.html">Materialized Views</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/lattice.html">Lattices</a></li>
+
+
+</ul>
+
+    
+    <h4>Avatica</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/avatica_overview.html">Overview</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/avatica_roadmap.html">Roadmap</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/avatica_json_reference.html">JSON Reference</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/avatica_protobuf_reference.html">Protobuf Reference</a></li>
+
+
+</ul>
+
+    
+    <h4>Reference</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/reference.html">SQL language</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/model.html">JSON/YAML models</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/howto.html">HOWTO</a></li>
+
+
+</ul>
+
+    
+    <h4>Meta</h4>
+    
+
+<ul>
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/history.html">History</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/docs/powered_by.html">Powered by Calcite</a></li>
+
+
+  
+  
+  
+  
+
+  
+
+  <li class=""><a href="/javadocAggregate">API</a></li>
+
+
+</ul>
+
+    
+  </aside>
+</div>
+
+
+      <div class="clear"></div>
+
+    </div>
+  </section>
+
+
+  <footer role="contentinfo">
+  <div id="poweredby">
+    <a href="http://www.apache.org/">
+      <span class="sr-only">Apache</span>
+      <img src="/img/feather.png" width="190" height="77" alt="Apache Logo"></a>
+  </div>
+  <div id="copyright">
+  <p>The contents of this website are Copyright © 2022
+     <a href="https://www.apache.org/">Apache Software Foundation</a>
+     under the terms of
+     the <a href="https://www.apache.org/licenses/">
+     Apache License v2</a>. Apache Calcite and its logo are
+     trademarks of the Apache Software Foundation.
+  </p>
+  <p>
+      <a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy Policy</a>
+  </p>
+  </div>
+</footer>
+
+  <script>
+  var anchorForId = function (id) {
+    var anchor = document.createElement("a");
+    anchor.className = "header-link";
+    anchor.href      = "#" + id;
+    anchor.innerHTML = "<span class=\"sr-only\">Permalink</span><i class=\"fa fa-link\"></i>";
+    anchor.title = "Permalink";
+    return anchor;
+  };
+
+  var linkifyAnchors = function (level, containingElement) {
+    var headers = containingElement.getElementsByTagName("h" + level);
+    for (var h = 0; h < headers.length; h++) {
+      var header = headers[h];
+
+      if (typeof header.id !== "undefined" && header.id !== "") {
+        header.appendChild(anchorForId(header.id));
+      }
+    }
+  };
+
+  document.onreadystatechange = function () {
+    if (this.readyState === "complete") {
+      var contentBlock = document.getElementsByClassName("docs")[0] || document.getElementsByClassName("news")[0];
+      if (!contentBlock) {
+        return;
+      }
+      for (var level = 1; level <= 6; level++) {
+        linkifyAnchors(level, contentBlock);
+      }
+    }
+  };
+</script>
+
+
+</body>
+</html>
